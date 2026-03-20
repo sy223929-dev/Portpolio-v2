@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  /* Dark palette - primary */
+  --color-surface-0: #06080d;
+  --color-surface-1: #0c1017;
+  --color-surface-2: #131825;
+  --color-surface-3: #1a2133;
+  --color-surface-4: #232d42;
+
+  /* Accents */
+  --color-cyan: #06b6d4;
+  --color-cyan-dim: #083344;
+  --color-violet: #8b5cf6;
+  --color-violet-dim: #2e1065;
+  --color-emerald: #10b981;
+  --color-emerald-dim: #064e3b;
+  --color-amber: #f59e0b;
+  --color-amber-dim: #451a03;
+  --color-rose: #f43f5e;
+
+  /* Text */
+  --color-t1: #f1f5f9;
+  --color-t2: #94a3b8;
+  --color-t3: #475569;
+
+  /* Borders */
+  --color-b1: #1e293b;
+  --color-b2: #334155;
+}
+
+/* ── Light theme overrides ─────────────────────────────────── */
+.light {
+  --color-surface-0: #f8fafc;
+  --color-surface-1: #f1f5f9;
+  --color-surface-2: #e2e8f0;
+  --color-surface-3: #cbd5e1;
+  --color-surface-4: #94a3b8;
+  --color-t1: #0f172a;
+  --color-t2: #475569;
+  --color-t3: #94a3b8;
+  --color-b1: #e2e8f0;
+  --color-b2: #cbd5e1;
+  --color-cyan-dim: #cffafe;
+  --color-violet-dim: #ede9fe;
+  --color-emerald-dim: #d1fae5;
+  --color-amber-dim: #fef3c7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-surface-0);
+  color: var(--color-t1);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-b1); border-radius: 3px; }
+
+/* ── Animated grid ─────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.light .grid-bg {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+}
+
+/* ── Glow ──────────────────────────────────────────────────── */
+.glow-cyan {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15), 0 0 80px rgba(6, 182, 212, 0.06);
+}
+.light .glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.12);
+}
+.glow-text {
+  text-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
+}
+.light .glow-text {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+/* ── Card hover ────────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+.light .card-lift:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Gradient text ─────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Timeline ──────────────────────────────────────────────── */
+.timeline-dot {
+  box-shadow: 0 0 0 4px var(--color-surface-1), 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+/* ── Progress bar ──────────────────────────────────────────── */
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.bar-animate {
+  transform-origin: left;
+  animation: barGrow 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Floating ──────────────────────────────────────────────── */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-y { animation: floatY 4s ease-in-out infinite; }
+
+@keyframes floatY2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.float-y2 { animation: floatY2 5s ease-in-out infinite; }
